@@ -1,2 +1,8 @@
 <h1>{{title}}</h1>
-<app-heroes></app-heroes>
+<nav>
+  <a routerLink="/dashboard">대쉬보드</a>
+  <a routerLink="/heroes">히어로들</a>
+</nav>
+<!--라우팅 된 화면이 표시될 위치를 지정하는 엘리먼트-->
+<router-outlet></router-outlet>
+<app-messages></app-messages>

@@ -1,22 +1,29 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <li>
-    <span class="badge">{{hero.id}}</span>
-    {{hero.name}}
+  <!--  클래스 바인딩: 특정 조건에 따라 css 클래스를 추가하거나 제거할 수 있음 -->
+  <!--  hero가 selectedHero(선택한 히어로)일 때-->
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span>
+      {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
   </li>
 </ul>
 
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
 
-<h2> {{hero.name | uppercase}} </h2>
-<div>
-  <label for="name">Hero name:</label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name">
+  <button class="add-button"  (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
 </div>
-<div>
-  <span>id:</span>
-  <span>{{hero.id}}</span>
-</div>
-<div>
-  <span>name:</span>
-  <span>{{hero.name}}</span>
-</div>
+
+<!--자식 컴포넌트로 selectedHero를 전달-->
+<!--프로퍼티 바인딩: heroescomponent의 selectedHero 프로퍼티가 heroDetailComponent의 hero 프로퍼티로 단방향 데이터 바인딩-->
+<!--selectedHero가 바뀌면 hero 값도 바뀐다.-->
+<!--<app-hero-detail [hero]="selectedHero"></app-hero-detail>-->
+
+
