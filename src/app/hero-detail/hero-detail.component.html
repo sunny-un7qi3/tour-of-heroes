@@ -1,0 +1,20 @@
+<!--외부에서 hero 프로퍼티를 참조해야함 -->
+
+<div *ngIf="hero">
+  <h2> {{hero.name | uppercase}} </h2>
+  <div>
+    <span>id:</span>
+    <span>{{hero.id}}</span>
+  </div>
+  <div>
+    <span>name:</span>
+    <span>{{hero.name}}</span>
+  </div>
+  <div>
+    <label for="name">Hero name:</label>
+    <input id="name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+</div>
+
+<button (click)="goBack()">뒤로가기</button>
+<button (click)="save()">저장</button>

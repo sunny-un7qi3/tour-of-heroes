@@ -1,0 +1,18 @@
+<div id="search-component">
+  <label for="search-box">Hero Search</label>
+<!--  사용자가 텍스트박스에 키보드를 입려할 때마다 입력된 내용이 search()의 인자로 전달 -->
+  <input #searchBox id="search-box" (input)="search(searchBox.value)"/>
+
+
+<!--  밑에 검색결과 뜸-->
+  <ul class="search-result">
+<!--    $: Observable을 뜻하는 관용적 표현-->
+<!--    ngFor은 옵저버블을 대상으로 어떤 작업도 수행하지 않음-->
+<!--    async 파이프: Observable을 자동으로 구독-->
+    <li *ngFor="let hero of heroes$ | async">
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>
